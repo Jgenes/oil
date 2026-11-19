@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="mcuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B2545" />
+      <stop offset="100%" stop-color="#133E87" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+  <!-- Outer Gold Ring -->
+  <circle cx="50" cy="50" r="48" fill="url(#mcuGrad)" stroke="url(#goldGrad)" stroke-width="3" />
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="2,2" />
+  
+  <!-- Shield Outline -->
+  <path d="M 50 15 L 74 25 C 74 55 50 78 50 82 C 50 78 26 55 26 25 Z" fill="#FFFFFF" stroke="url(#goldGrad)" stroke-width="2" />
+  
+  <!-- Internal University Symbols -->
+  <!-- Upper Book / Knowledge -->
+  <path d="M 36 34 Q 50 30 50 38 Q 50 30 64 34 L 64 48 Q 50 44 50 52 Q 50 44 36 48 Z" fill="#0B2545" />
+  <!-- Center Star / Torch -->
+  <circle cx="50" cy="42" r="3.5" fill="#F59E0B" />
+  <!-- Lower Co-operative Handshake / Unity Gear -->
+  <circle cx="50" cy="62" r="8" fill="none" stroke="#133E87" stroke-width="2.5" />
+  <path d="M 44 62 L 56 62" stroke="#F59E0B" stroke-width="2" />
+  <path d="M 50 56 L 50 68" stroke="#F59E0B" stroke-width="2" />
+  
+  <!-- MoCU Letters -->
+  <text x="50" y="73" text-anchor="middle" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="7" fill="#0B2545" letter-spacing="1">MoCU</text>
+  <text x="50" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="4.5" fill="#D97706">1963</text>
+</svg>
