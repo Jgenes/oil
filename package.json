@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server/server.js",
     "build": "cd client && npm run build",
-    "seed": "node server/db/seed.js"
+    "seed": "node server/db/seed.js",
+    "seed:mongo": "node server/db/seedMongo.js"
   },
   "dependencies": {},
   "author": "Moshi Co-operative University (MoCU)",

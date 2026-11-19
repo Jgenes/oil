@@ -117,6 +117,45 @@ Or click the **"Reset Demo"** button directly in the application navbar.
 
 ## 7. Official Contact Details
 
+---
+
+## 5. MongoDB Database Configuration & Deployment
+
+The MoCU Fleet Management System includes complete **MongoDB & Mongoose** support with dedicated schemas, connection management, and automated database seeders.
+
+### Environment Configuration (`.env`)
+```bash
+PORT=3000
+MONGODB_USERNAME="josephgenes1999_db_user"
+MONGODB_PASSWORD="8jEn3gNUD4bTpuU7"
+MONGODB_URI="mongodb+srv://josephgenes1999_db_user:8jEn3gNUD4bTpuU7@<your-cluster>.mongodb.net/mocu_fleet?retryWrites=true&w=majority"
+JWT_SECRET="mocu-fleet-secure-secret-key-2026"
+```
+
+### Mongoose Models Implemented:
+- `User`: Roles, credentials, signatures, department assignments
+- `Department`: Budgets, HOD info, expenditure tracking
+- `Vehicle`: Tanzanian registrations, engine specs, category, baseline KM/L, inspection dates
+- `Driver`: Licence classes, expiry dates, trip mileage
+- `FuelSupplier`: Contracted stations, petrol & diesel tariffs
+- `FuelRequest`: Multi-stage approvals, Slip 3143 fields, HPMU declarations
+- `FuelIssuance`: Pump vouchers, variance reconciliation, invoice tracking
+- `Trip`: Start/end odometers, fuel allocated/consumed/remaining, anomaly flags
+- `MaintenanceRecord`: Garage repairs, spare parts, scheduled servicing
+- `AuditLog`: Immutable compliance ledger with diff tracking
+- `Notification`: Actionable alerts for each user role
+- `OdometerAdjustment`: Authorized odometer maintenance records
+
+### Database Seeding Command
+To populate MongoDB Atlas with initial university data (including Requisition Form No. 3143):
+```bash
+npm run seed:mongo
+```
+
+---
+
+## 6. Institutional Contact Information
+
 **Moshi Co-operative University (MoCU)**  
 06 Sokoine Road, 25121 Mfumuni, P. O. Box 474, Moshi, Kilimanjaro, Tanzania  
 - **Telephone:** +255 27 275 1833  

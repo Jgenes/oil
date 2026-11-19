@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -5,6 +6,12 @@ const fs = require('fs');
 const morgan = require('morgan');
 const { db } = require('./db/database');
 const { seedDatabase } = require('./db/seed');
+const { connectMongo, getMongoStatus } = require('./config/mongo');
+
+// Attempt MongoDB connection if configured
+connectMongo().catch(err => {
+  console.log('[MongoDB] Connection attempt finished:', err.message);
+});
 
 // Seed database on startup if empty
 const userCount = db.prepare('SELECT COUNT(*) as c FROM users').get().c;
@@ -72,6 +79,28 @@ app.get('/api/health', (req, res) => {
     university: 'Moshi Co-operative University (MoCU)',
     system: 'Fleet Fuel and Vehicle Management System',
     timestamp: new Date().toISOString()
+  });
+});
+
+// Database status check
+app.get('/api/database-status', (req, res) => {
+  const mongoStatus = getMongoStatus();
+  const rawUri = process.env.MONGODB_URI || '';
+  const maskedUri = rawUri ? rawUri.replace(/:([^:@]+)@/, ':****@') : 'Not configured';
+
+  res.json({
+    active_database: mongoStatus.isConnected ? 'MongoDB Atlas' : 'Embedded SQLite (Sandbox Fallback Mode)',
+    mongodb: {
+      configured: Boolean(process.env.MONGODB_URI),
+      uri: maskedUri,
+      username: process.env.MONGODB_USERNAME || null,
+      status: mongoStatus.readyStateDesc,
+      connected: mongoStatus.isConnected,
+      models_ready: ['User', 'Department', 'Vehicle', 'Driver', 'FuelSupplier', 'FuelRequest', 'FuelIssuance', 'Trip', 'MaintenanceRecord', 'AuditLog', 'Notification', 'OdometerAdjustment']
+    },
+    message: mongoStatus.isConnected
+      ? 'Successfully connected to MongoDB database.'
+      : 'Using local database engine in current environment. Remote MongoDB schemas and seeder (npm run seed:mongo) are ready for deployment.'
   });
 });
 
