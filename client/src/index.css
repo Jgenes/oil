@@ -1,9 +1,11 @@
 :root {
   --mocu-navy: #0B2545;
   --mocu-navy-dark: #081B33;
-  --mocu-blue: #133E87;
-  --mocu-blue-light: #2563EB;
-  --mocu-blue-soft: #EEF4FF;
+  --mocu-blue: #056FE7;
+  --mocu-blue-light: #2D8BFF;
+  --mocu-blue-soft: #EBF4FE;
+  --bs-primary: #056FE7;
+  --bs-primary-rgb: 5, 111, 231;
   --mocu-gold: #D97706;
   --mocu-gold-light: #FEF3C7;
   --mocu-gold-accent: #F59E0B;
@@ -16,6 +18,40 @@
   --mocu-warning: #F59E0B;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Primary Theme Overrides for MoCU Blue (#056FE7) */
+.btn-primary {
+  background-color: #056FE7 !important;
+  border-color: #056FE7 !important;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: #0458B8 !important;
+  border-color: #0458B8 !important;
+}
+.btn-outline-primary {
+  color: #056FE7 !important;
+  border-color: #056FE7 !important;
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
+  background-color: #056FE7 !important;
+  border-color: #056FE7 !important;
+  color: #FFFFFF !important;
+}
+.text-primary {
+  color: #056FE7 !important;
+}
+.bg-primary {
+  background-color: #056FE7 !important;
+}
+.border-primary {
+  border-color: #056FE7 !important;
+}
+.badge.bg-primary {
+  background-color: #056FE7 !important;
+}
+.progress-bar {
+  background-color: #056FE7;
 }
 
 body {

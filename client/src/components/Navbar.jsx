@@ -89,9 +89,9 @@ export default function Navbar({ onToggleSidebar, onNavigate }) {
               className="d-none d-sm-block"
             />
             <img
-              src="/logo.svg"
+              src="/logo.png"
               alt="MoCU Crest"
-              style={{ width: '42px', height: '42px' }}
+              style={{ width: '44px', height: '44px', objectFit: 'contain' }}
             />
             <div>
               <div className="fw-bold lh-1 text-white d-flex align-items-center gap-2">

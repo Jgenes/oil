@@ -88,8 +88,8 @@ export default function DashboardView({ onNavigate, onViewSlip }) {
       {
         label: 'Fuel Consumed (Litres)',
         data: monthlyTrends.map(m => m.fuel_consumed),
-        borderColor: '#133E87',
-        backgroundColor: 'rgba(19, 62, 135, 0.15)',
+        borderColor: '#056FE7',
+        backgroundColor: 'rgba(5, 111, 231, 0.15)',
         fill: true,
         tension: 0.3,
         yAxisID: 'y'

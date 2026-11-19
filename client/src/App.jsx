@@ -48,7 +48,7 @@ export default function App() {
     return (
       <div className="d-flex align-items-center justify-content-center vh-100 bg-light">
         <div className="text-center">
-          <img src="/logo.svg" alt="MoCU" style={{ width: '70px', height: '70px' }} className="mb-3 spin" />
+          <img src="/logo.png" alt="MoCU" style={{ width: '70px', height: '70px', objectFit: 'contain' }} className="mb-3" />
           <h5 className="fw-bold text-dark">Moshi Co-operative University</h5>
           <div className="text-muted small">Initializing Fleet Fuel and Vehicle Management System...</div>
         </div>

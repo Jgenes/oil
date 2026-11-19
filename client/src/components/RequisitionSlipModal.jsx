@@ -191,7 +191,7 @@ export default function RequisitionSlipModal({ slipData, onClose }) {
                   <div style={{ fontSize: '0.72rem' }}>06 Sokoine Road, 25121 Mfumuni, P. O. Box 474, Moshi, Tanzania</div>
                   <div style={{ fontSize: '0.72rem' }}>Tel: +255 272751833, Email: vc@mocu.ac.tz, Website: www.mocu.ac.tz</div>
                 </div>
-                <img src="/logo.svg" alt="MoCU Crest" style={{ width: '60px', height: '60px' }} />
+                <img src="/logo.png" alt="MoCU Crest" style={{ width: '65px', height: '65px', objectFit: 'contain' }} />
               </div>
 
               <hr style={{ borderTop: '2px solid #000', margin: '8px 0 16px 0' }} />

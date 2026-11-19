@@ -150,21 +150,24 @@ export default function ReportsView() {
   return (
     <div className="container-fluid py-4">
       {/* Printable Letterhead (visible during print) */}
-      <div className="d-none d-print-block text-center mb-4 pb-3 border-bottom border-2 border-dark">
-        <h4 className="fw-bold mb-1 text-uppercase">United Republic of Tanzania</h4>
-        <h5 className="fw-bold mb-1 text-uppercase text-primary" style={{ color: '#002B49' }}>
-          Moshi Co-operative University (MoCU)
-        </h5>
-        <h6 className="text-muted mb-2">Chuo Kikuu cha Ushirika Moshi</h6>
-        <p className="small mb-1">
-          06 Sokoine Road, 25121 Mfumuni, P.O. Box 474, Moshi, Kilimanjaro, Tanzania
-        </p>
-        <p className="small mb-0">
-          <strong>Official Fleet & Fuel Logistics Institutional Report:</strong> {currentReportObj?.label}
-        </p>
-        <p className="small text-muted">
-          Generated on: {new Date().toLocaleString()} | Authenticated User: {user?.name} ({user?.role})
-        </p>
+      <div className="d-none d-print-block mb-4 pb-3 border-bottom border-2 border-dark">
+        <div className="d-flex align-items-center justify-content-between mb-2">
+          <img src="/coat-of-arms.svg" alt="Coat of Arms" style={{ width: '65px', height: '65px' }} />
+          <div className="text-center flex-grow-1 px-3">
+            <h5 className="fw-bold mb-0 text-uppercase">United Republic of Tanzania</h5>
+            <h6 className="text-muted text-uppercase mb-1" style={{ fontSize: '0.85rem' }}>Ministry of Education, Science and Technology</h6>
+            <h4 className="fw-bold mb-0 text-uppercase" style={{ color: '#056FE7' }}>
+              Moshi Co-operative University (MoCU)
+            </h4>
+            <div className="fw-bold small">Chuo Kikuu cha Ushirika Moshi</div>
+            <div className="small text-muted">06 Sokoine Road, 25121 Mfumuni, P.O. Box 474, Moshi, Kilimanjaro, Tanzania</div>
+          </div>
+          <img src="/logo.png" alt="MoCU Crest" style={{ width: '65px', height: '65px', objectFit: 'contain' }} />
+        </div>
+        <div className="text-center bg-light py-1 border rounded">
+          <strong className="small text-uppercase">Official Institutional Report: {currentReportObj?.label}</strong>
+          <span className="small text-muted ms-2">| Generated on: {new Date().toLocaleString()} by {user?.name} ({user?.role})</span>
+        </div>
       </div>
 
       {/* Screen Header */}
@@ -218,7 +221,7 @@ export default function ReportsView() {
                     className={`list-group-item list-group-item-action d-flex align-items-center gap-2 py-2.5 px-3 border-0 small ${
                       isActive ? 'bg-primary text-white fw-bold shadow-sm' : 'text-dark'
                     }`}
-                    style={isActive ? { backgroundColor: '#002B49' } : {}}
+                    style={isActive ? { backgroundColor: '#056FE7' } : {}}
                   >
                     <IconComponent size={16} className={isActive ? 'text-white' : 'text-muted'} />
                     <span className="text-truncate">{rep.label}</span>
