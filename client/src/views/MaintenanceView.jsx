@@ -46,6 +46,7 @@ export default function MaintenanceView() {
     invoice_number: '',
     next_service_date: '',
     next_service_mileage: '',
+    supporting_documents: '',
     set_vehicle_status: 'Under Maintenance'
   });
 
@@ -286,7 +287,14 @@ export default function MaintenanceView() {
                         </div>
                       )}
                     </td>
-                    <td>{m.service_provider}</td>
+                    <td>
+                      <div className="fw-semibold">{m.service_provider}</div>
+                      {m.supporting_documents && (
+                        <div className="text-muted small font-monospace" title={m.supporting_documents}>
+                          📎 {m.supporting_documents}
+                        </div>
+                      )}
+                    </td>
                     <td className="text-end font-monospace fw-bold text-dark">
                       {Number(m.cost).toLocaleString()} TZS
                     </td>
@@ -474,6 +482,17 @@ export default function MaintenanceView() {
                         className="form-control form-control-sm"
                         value={newMnt.next_service_date}
                         onChange={(e) => setNewMnt({ ...newMnt, next_service_date: e.target.value })}
+                      />
+                    </div>
+
+                    <div className="col-12">
+                      <label className="form-label small fw-bold">Supporting Documents (Job Card / Garage Invoice Reference)</label>
+                      <input
+                        type="text"
+                        className="form-control form-control-sm"
+                        placeholder="e.g. DOC-TOYOTA-JC-99214.pdf / Attached Job Card No. 8812"
+                        value={newMnt.supporting_documents}
+                        onChange={(e) => setNewMnt({ ...newMnt, supporting_documents: e.target.value })}
                       />
                     </div>
                   </div>

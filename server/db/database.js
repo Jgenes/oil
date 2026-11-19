@@ -245,6 +245,7 @@ function initSchema() {
       invoice_number TEXT,
       next_service_date DATE,
       next_service_mileage REAL,
+      supporting_documents TEXT,
       status TEXT NOT NULL DEFAULT 'Completed', -- 'Scheduled', 'In Progress', 'Completed', 'Cancelled'
       recorded_by_id INTEGER,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,

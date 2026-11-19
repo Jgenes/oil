@@ -29,6 +29,17 @@ function authenticateToken(req, res, next) {
       return res.status(403).json({ success: false, error: 'User account not found or deactivated' });
     }
     req.user = user;
+
+    // Enforce read-only auditor access for all state-modifying requests
+    if (req.user.role === 'auditor' && ['POST', 'PUT', 'PATCH', 'DELETE'].includes(req.method)) {
+      if (!req.path.startsWith('/notifications') && !req.path.startsWith('/auth')) {
+        return res.status(403).json({
+          success: false,
+          error: 'Read-only access: Internal Auditor is prohibited from creating, modifying, or approving records to preserve statutory audit independence.'
+        });
+      }
+    }
+
     next();
   });
 }

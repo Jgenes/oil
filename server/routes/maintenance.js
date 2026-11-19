@@ -85,7 +85,7 @@ router.post('/', authenticateToken, requireRole(['transport_officer', 'admin']),
     vehicle_id, service_date = new Date().toISOString().substring(0, 10),
     service_mileage, service_type, description, spare_parts_used,
     service_provider, cost, invoice_number, next_service_date, next_service_mileage,
-    set_vehicle_status = 'Under Maintenance'
+    supporting_documents, set_vehicle_status = 'Under Maintenance'
   } = req.body;
 
   if (!vehicle_id || !service_type || !description || !service_provider || cost === undefined) {
@@ -108,8 +108,8 @@ router.post('/', authenticateToken, requireRole(['transport_officer', 'admin']),
       INSERT INTO maintenance_records (
         maintenance_number, vehicle_id, service_date, service_mileage, service_type,
         description, spare_parts_used, service_provider, cost, invoice_number,
-        next_service_date, next_service_mileage, status, recorded_by_id
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'In Progress', ?)
+        next_service_date, next_service_mileage, supporting_documents, status, recorded_by_id
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'In Progress', ?)
     `);
 
     const result = insert.run(
@@ -125,6 +125,7 @@ router.post('/', authenticateToken, requireRole(['transport_officer', 'admin']),
       invoice_number || null,
       next_service_date || null,
       next_service_mileage ? Number(next_service_mileage) : null,
+      supporting_documents || null,
       req.user.id
     );
 
