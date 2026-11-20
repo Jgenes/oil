@@ -49,7 +49,7 @@ The system incorporates official MoCU visual identity elements:
 | **H. Department Management** | Department fuel votes, annual budget allocations, actual expenditures, budget utilization percentages, and assigned vehicle scopes. |
 | **I. Fuel Suppliers & Stations** | Contracted station profiles (Puma Sokoine, Total Mawenzi, Oryx Boma, Lake Oil), diesel and petrol tariff management, transaction histories. |
 | **J. Vehicle Maintenance & Servicing** | Service history logs, workshop providers (MoCU Central Workshop, Toyota Tanzania Moshi), parts used, costs, next service date/mileage countdown reminders. |
-| **K. Institutional Reports & Exports** | 8 comprehensive analytical reports with date/vehicle/department filters, 1-click **Export to Excel (.xlsx)**, and printable PDF format. |
+| **K. Institutional Reports & Exports** | 12 comprehensive analytical reports with date/vehicle/department filters, 1-click **Export to Excel (.xlsx)**, and printable PDF format with official university certification signatures. |
 | **L. Compliance Audit Trail** | Tamper-evident ledger recording user ID, role, action, old values, new values, timestamp, IP address, and supervisor justification. |
 
 ---
@@ -88,6 +88,60 @@ All accounts use the standard test password: `mocu@2026`
 - Node.js v18+ (tested on Node v22.22.3)
 - npm v9+
 
+---
+
+## 5. Technology Stack Architecture
+
+The system is built on a clean, scalable, full-stack **JavaScript/Node.js** architecture:
+
+- **Backend Runtime:** Node.js (v20+) with Express.js RESTful API architecture.
+- **Database & ODM:** MongoDB & Mongoose ODM (`server/models/`) with automated fallback management for restricted container environments.
+- **Security & RBAC:** JSON Web Tokens (JWT), bcrypt password hashing, role-based route middleware, read-only auditor restrictions, and department confidentiality scoping.
+- **Frontend Framework:** React.js (v19) built with Vite bundler.
+- **Styling & Branding:** Bootstrap 5, university brand blue `#056FE7`, and the official circular MoCU seal logo.
+- **Data Visualization & Analytics:** Chart.js and React-Chartjs-2 for interactive fuel consumption and distance trendlines.
+- **UI Components & Feedback:** React Icons, Lucide Icons, and React Toastify notifications.
+- **Reporting & Exports:** Client-side Excel export (`.xlsx`) via SheetJS and printable official certification letterheads.
+
+---
+
+## 6. MongoDB Database Configuration & Deployment
+
+The MoCU Fleet Management System includes complete **MongoDB & Mongoose** support with dedicated schemas, connection management, and automated database seeders.
+
+### Environment Configuration (`.env`)
+```bash
+PORT=3000
+MONGODB_USERNAME="josephgenes1999_db_user"
+MONGODB_PASSWORD="8jEn3gNUD4bTpuU7"
+MONGODB_URI="mongodb+srv://josephgenes1999_db_user:8jEn3gNUD4bTpuU7@cluster0.mongodb.net/mocu_fleet?retryWrites=true&w=majority"
+JWT_SECRET="mocu-fleet-secure-secret-key-2026"
+```
+
+### Mongoose Models Implemented:
+- `User`: Roles, credentials, signatures, department assignments
+- `Department`: Budgets, HOD info, expenditure tracking
+- `Vehicle`: Tanzanian registrations, engine specs, category, baseline KM/L, inspection dates
+- `Driver`: Licence classes, expiry dates, trip mileage
+- `FuelSupplier`: Contracted stations, petrol & diesel tariffs
+- `FuelRequest`: Multi-stage approvals, Slip 3143 fields, HPMU declarations
+- `FuelIssuance`: Pump vouchers, variance reconciliation, invoice tracking
+- `Trip`: Start/end odometers, fuel allocated/consumed/remaining, anomaly flags
+- `MaintenanceRecord`: Garage repairs, spare parts, scheduled servicing, supporting documents
+- `AuditLog`: Immutable compliance ledger with diff tracking
+- `Notification`: Actionable alerts for each user role
+- `OdometerAdjustment`: Authorized odometer maintenance records
+
+### Database Seeding Command
+To populate MongoDB Atlas with initial university data (including Requisition Form No. 3143):
+```bash
+npm run seed:mongo
+```
+
+---
+
+## 7. Setup & Execution Instructions
+
 ### Quick Start
 ```bash
 # 1. Install dependencies
@@ -97,7 +151,7 @@ cd ../client && npm install
 # 2. Build the React frontend
 cd ../client && npm run build
 
-# 3. Start the application
+# 3. Start the Node.js application
 cd .. && npm start
 ```
 
@@ -115,46 +169,7 @@ Or click the **"Reset Demo"** button directly in the application navbar.
 
 ---
 
-## 7. Official Contact Details
-
----
-
-## 5. MongoDB Database Configuration & Deployment
-
-The MoCU Fleet Management System includes complete **MongoDB & Mongoose** support with dedicated schemas, connection management, and automated database seeders.
-
-### Environment Configuration (`.env`)
-```bash
-PORT=3000
-MONGODB_USERNAME="josephgenes1999_db_user"
-MONGODB_PASSWORD="8jEn3gNUD4bTpuU7"
-MONGODB_URI="mongodb+srv://josephgenes1999_db_user:8jEn3gNUD4bTpuU7@<your-cluster>.mongodb.net/mocu_fleet?retryWrites=true&w=majority"
-JWT_SECRET="mocu-fleet-secure-secret-key-2026"
-```
-
-### Mongoose Models Implemented:
-- `User`: Roles, credentials, signatures, department assignments
-- `Department`: Budgets, HOD info, expenditure tracking
-- `Vehicle`: Tanzanian registrations, engine specs, category, baseline KM/L, inspection dates
-- `Driver`: Licence classes, expiry dates, trip mileage
-- `FuelSupplier`: Contracted stations, petrol & diesel tariffs
-- `FuelRequest`: Multi-stage approvals, Slip 3143 fields, HPMU declarations
-- `FuelIssuance`: Pump vouchers, variance reconciliation, invoice tracking
-- `Trip`: Start/end odometers, fuel allocated/consumed/remaining, anomaly flags
-- `MaintenanceRecord`: Garage repairs, spare parts, scheduled servicing
-- `AuditLog`: Immutable compliance ledger with diff tracking
-- `Notification`: Actionable alerts for each user role
-- `OdometerAdjustment`: Authorized odometer maintenance records
-
-### Database Seeding Command
-To populate MongoDB Atlas with initial university data (including Requisition Form No. 3143):
-```bash
-npm run seed:mongo
-```
-
----
-
-## 6. Institutional Contact Information
+## 8. Institutional Contact Information
 
 **Moshi Co-operative University (MoCU)**  
 06 Sokoine Road, 25121 Mfumuni, P. O. Box 474, Moshi, Kilimanjaro, Tanzania  
