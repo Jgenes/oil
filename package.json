@@ -1,0 +1,14 @@
+{
+  "name": "mocu-fleet-management-system",
+  "version": "1.0.0",
+  "description": "Moshi Co-operative University (MoCU) Fleet Fuel and Vehicle Management System",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "cd client && npm run build",
+    "seed": "node server/db/seed.js",
+    "seed:mongo": "node server/db/seedMongo.js"
+  },
+  "dependencies": {},
+  "author": "Moshi Co-operative University (MoCU)",
+  "license": "UNLICENSED"
+}
